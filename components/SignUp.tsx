@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
-import Content from "./signup/Content";
-import SignInCard from "./signup/SignUpCard";
+import Content from "./login/Content";
+import SignInCard from "./login/LoginCard";
+import SignUpCard from "./signup/SignUpCard";
 
 export default function SignUpPage() {
   return (
@@ -55,7 +56,7 @@ export default function SignUpPage() {
             }}
           >
             <Content />
-            <SignInCard />
+            <SignUpCard />
           </Stack>
         </Stack>
       </Stack>

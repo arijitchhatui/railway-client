@@ -1,8 +1,10 @@
 import { LoadingButton } from "@mui/lab";
 import {
   Button,
+  Checkbox,
   Divider,
   FormControl,
+  FormControlLabel,
   FormLabel,
   IconButton,
   InputAdornment,
@@ -37,27 +39,22 @@ const Card = styled(MuiCard)(({ theme }) => ({
   }),
 }));
 
-export default function SignUpCard() {
+export default function InCard() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
-  const { signup } = useAPI();
+  const { login } = useAPI();
 
   const handleShowPassword = () => setShowPassword((show) => !show);
 
-  const onSubmit = async () => {
+  const handleSubmit = async () => {
     setLoading(true);
     try {
-      await signup({ email, password, fullName });
+      await login({ email, password });
       window.location.href = "/account";
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -69,34 +66,14 @@ export default function SignUpCard() {
         variant="h4"
         sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
       >
-        Sign up
+        Login
       </Typography>
       <Box
         component="form"
         noValidate
-        onSubmit={(e) => {
-          e.preventDefault();
-          return onSubmit();
-        }}
         sx={{ display: "flex", flexDirection: "column", width: "100%", gap: 2 }}
       >
-        <FormControl fullWidth>
-          <FormLabel htmlFor="fullName">Full Name</FormLabel>
-          <TextField
-            id="fullName"
-            type="text"
-            name="fullName"
-            placeholder="Name"
-            autoComplete="Full Name"
-            autoFocus
-            required
-            fullWidth
-            variant="outlined"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-          />
-        </FormControl>
-        <FormControl fullWidth>
+        <FormControl>
           <FormLabel htmlFor="email">Email</FormLabel>
           <TextField
             id="email"
@@ -109,19 +86,21 @@ export default function SignUpCard() {
             fullWidth
             variant="outlined"
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            onBlur={(e) => {
-              setValidEmail(
-                /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(e.target.value)
-              );
-            }}
-            
+            onChange={(e) => setEmail(e.target.value)}
           />
         </FormControl>
-        <FormControl fullWidth>
-          <FormLabel htmlFor="password">Password</FormLabel>
+        <FormControl>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <Link
+              component="button"
+              type="button"
+              variant="body2"
+              sx={{ alignSelf: "baseline" }}
+            >
+              Forgot your password?
+            </Link>
+          </Box>
           <TextField
             name="password"
             placeholder="Password"
@@ -134,11 +113,6 @@ export default function SignUpCard() {
             variant="outlined"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onBlur={(e) => {
-              setValidPassword(
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(e.target.value)
-              );
-            }}
             slotProps={{
               input: {
                 endAdornment: (
@@ -148,7 +122,7 @@ export default function SignUpCard() {
                       onClick={handleShowPassword}
                       edge="end"
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -156,43 +130,36 @@ export default function SignUpCard() {
             }}
           />
         </FormControl>
-
+        <FormControlLabel
+          control={<Checkbox value="remember" color="primary" />}
+          label="Remember me"
+        />
         <LoadingButton
           loading={loading}
           startIcon={null}
           type="submit"
           fullWidth
           variant="contained"
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
         >
-          Sign up
+          Login
         </LoadingButton>
         <Typography sx={{ textAlign: "center" }}>
-          Already have an account?{" "}
+          Don&apos;t have an account?{" "}
           <span>
-            <Link href="/login" variant="body2" sx={{ alignSelf: "center" }}>
-              Login
+            <Link href="/signin" variant="body2" sx={{ alignSelf: "center" }}>
+              Sign up
             </Link>
           </span>
         </Typography>
       </Box>
       <Divider>or</Divider>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-        <Button
-          fullWidth
-          variant="outlined"
-          startIcon={<GoogleIcon />}
-          sx={{ fontSize: "0.85rem" }}
-        >
-          Sign up with Google
+        <Button fullWidth variant="outlined" startIcon={<GoogleIcon />}>
+          Sign in with Google
         </Button>
-        <Button
-          fullWidth
-          variant="outlined"
-          startIcon={<FacebookIcon />}
-          sx={{ fontSize: "0.85rem" }}
-        >
-          Sign up with Facebook
+        <Button fullWidth variant="outlined" startIcon={<FacebookIcon />}>
+          Sign in with Facebook
         </Button>
       </Box>
     </Card>
