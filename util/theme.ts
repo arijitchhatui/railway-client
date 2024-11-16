@@ -1,3 +1,4 @@
+"use client";
 import { createTheme } from "@mui/material";
 import { Roboto } from "next/font/google";
 
@@ -10,7 +11,7 @@ const roboto = Roboto({
 const theme = createTheme({
   typography: {
     fontFamily: roboto.style.fontFamily,
-    allVariants: { color: "#fff" },
+    allVariants: {  },
   },
   components: {
     MuiButton: {

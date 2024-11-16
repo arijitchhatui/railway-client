@@ -1,9 +1,9 @@
 import { UserContextWrapper } from "@/hooks/api/user-context";
 import { UserProfilesEntity } from "@/hooks/entities/users.entity";
-import { authCookieKey } from "@/library/constants";
+import { authCookieKey, authenticatedPathRegex } from "@/library/constants";
 import theme from "@/util/theme";
 import { ThemeProvider } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { cookies, headers } from "next/headers";
@@ -23,8 +23,8 @@ export const metadata = {
   manifest: "/manifest.json",
   keywords: ["nextjs", "nextjs14", "next14", "pwa", "next-pwa"],
   icons: [
-    { rel: "apple-touch-icon", url: "/png" },
-    { rel: "icon", url: "/png" },
+    { rel: "rail-icon", url: "icons/rail2.png" },
+    { rel: "icon", url: "icons/rail2.png" },
   ],
 } satisfies Metadata;
 
@@ -32,6 +32,9 @@ const validateAuth = async () => {
   const headersList = headers();
   const pathname = headersList.get("x-pathname") ?? "/";
   const accessToken = cookies().get(authCookieKey)?.value;
+
+  const isAuthenticatedPath = authenticatedPathRegex.test(pathname);
+  if (!isAuthenticatedPath) return null;
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/status`, {
     method: "GET",
@@ -42,9 +45,8 @@ const validateAuth = async () => {
   });
 
   if (
-    (res.status === 401 || res.status === 403) &&
-    !["/", "/login", "/signup"].includes(pathname)
-  ) {
+    res.status === 401 || res.status === 403)
+   {
     return redirect("/");
   }
 
@@ -71,7 +73,7 @@ export default async function RootLayout({
           <link key={idx} rel={rel} href={url} />
         ))}
       </head>
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -95,6 +97,7 @@ export default async function RootLayout({
           <UserContextWrapper user={user}>{children}</UserContextWrapper>
         </ThemeProvider>
       </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }

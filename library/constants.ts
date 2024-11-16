@@ -2,14 +2,13 @@ export const authCookieKey = "_accessToken";
 
 export const authenticatedPaths = ["/home", "/search", "/messages", "/reels"];
 
-export const authenticatedPathRegex = [
+export const authenticatedPathsRegex = [
   /^\/home/,
   /^\/search/,
   /^\/posts/,
   /^\/reels/,
   /^\/account/,
 ];
-
-export const authenticatedPathsRegex = new RegExp(
-  authenticatedPathRegex.map((r) => r.source).join("|")
+export const authenticatedPathRegex = new RegExp(
+  authenticatedPathsRegex.map((r) => r.source).join("|")
 );
