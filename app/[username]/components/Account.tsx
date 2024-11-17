@@ -1,7 +1,11 @@
+"use client";
+
+import { appBarOptions } from "@/components/GetImport";
+import { UserContext } from "@/hooks/api/user-context";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import TrainIcon from "@mui/icons-material/Train";
+import { Fab, Paper, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,14 +13,10 @@ import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-
-import { Fab } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import { useRouter } from "next/navigation";
-import { Fragment, useState } from "react";
-import { appBarOptions } from "../GetImport";
+import { Fragment, useContext, useState } from "react";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -29,9 +29,14 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   borderColor: theme.palette.divider,
 }));
 
-export default function AppAppBar() {
+export default function AccountPage() {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
+  const [user] = useContext(UserContext);
+  // const { id } = useParams();
+  // const pathname = usePathname();
+
+  // const pathName =
+  //   pathname === `/${user.username}/${id}` ? `${user.username}` : pathname;
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -68,31 +73,14 @@ export default function AppAppBar() {
           </Box>
           <Box
             sx={{
-              display: { xs: "none", md: "flex" },
+              display: "flex",
               gap: 1,
               alignItems: "center",
             }}
           >
-            <Button
-              color="primary"
-              variant="text"
-              size="small"
-              onClick={() => router.push("/login")}
-            >
-              Login
-            </Button>
-            <Button
-              color="primary"
-              variant="contained"
-              size="small"
-              onClick={() => router.push("/signup")}
-            >
-              Sign up
-            </Button>
-            <DarkModeIcon />
+            <Typography color="text.secondary">{user.username}</Typography>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
-            <DarkModeIcon sx={{ color: "primary" }} />
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
@@ -119,31 +107,23 @@ export default function AppAppBar() {
                 </Box>
                 {appBarOptions.map((option, idx) => (
                   <Fragment key={idx}>
-                    <MenuItem sx={{ color: "text.secondary" }}>
-                      {option.label}
-                    </MenuItem>
+                    <Paper elevation={3} sx={{ borderRadius: "16px" }}>
+                      <MenuItem sx={{ color: "text.secondary", my: 1 }}>
+                        {option.label}
+                      </MenuItem>
+                    </Paper>
                   </Fragment>
                 ))}
 
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    fullWidth
-                    onClick={() => router.push("/login ")}
-                  >
-                    Login
+                  <Button color="primary" variant="contained" fullWidth>
+                    Dark Mode
                   </Button>
                 </MenuItem>
                 <MenuItem>
-                  <Button
-                    color="primary"
-                    variant="outlined"
-                    fullWidth
-                    onClick={() => router.push("/signup")}
-                  >
-                    Sign up
+                  <Button color="primary" variant="outlined" fullWidth>
+                    Instant Ticket
                   </Button>
                 </MenuItem>
               </Box>

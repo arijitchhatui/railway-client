@@ -2,7 +2,6 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import Content from "./login/Content";
-import SignInCard from "./login/LoginCard";
 import InCard from "./login/LoginCard";
 
 export default function LoginPage() {

@@ -1,5 +1,6 @@
 "use client";
 
+import { BottomNav } from "@/components/BottomNav";
 import { authenticatedPaths } from "@/library/constants";
 import { Container } from "@mui/material";
 import { usePathname } from "next/navigation";
@@ -17,6 +18,7 @@ export default function RootLayout({
     <>
       <Container maxWidth="xs" style={{ padding: 0 }}>
         {children}
+        <BottomNav/>
       </Container>
     </>
   );

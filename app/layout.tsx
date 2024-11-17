@@ -44,9 +44,7 @@ const validateAuth = async () => {
     },
   });
 
-  if (
-    res.status === 401 || res.status === 403)
-   {
+  if (res.status === 401 || res.status === 403) {
     return redirect("/");
   }
 
@@ -74,29 +72,29 @@ export default async function RootLayout({
         ))}
       </head>
       <body className={roboto.className}>
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          className: "",
-          duration: 5000,
-          style: {
-            background: "#363636",
-            color: "#fff",
-          },
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{}}
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              background: "#363636",
+              color: "#fff",
+            },
 
-          success: { style: { background: "#000", color: "#fff" } },
-          error: { style: { background: "#b33234", color: "#fff" } },
-        }}
-      />
-      <AppRouterCacheProvider>
-        <ThemeProvider theme={theme}>
-          <UserContextWrapper user={user}>{children}</UserContextWrapper>
-        </ThemeProvider>
-      </AppRouterCacheProvider>
+            success: { style: { background: "#000", color: "#fff" } },
+            error: { style: { background: "#b33234", color: "#fff" } },
+          }}
+        />
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <UserContextWrapper user={user}>{children}</UserContextWrapper>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

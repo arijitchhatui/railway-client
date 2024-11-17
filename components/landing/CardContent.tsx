@@ -1,3 +1,5 @@
+"use client";
+
 import RssFeedRoundedIcon from "@mui/icons-material/RssFeedRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import Avatar from "@mui/material/Avatar";

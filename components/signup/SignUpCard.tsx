@@ -16,8 +16,9 @@ import MuiCard from "@mui/material/Card";
 import useAPI from "@/hooks/api/useAPI";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FacebookIcon, GoogleIcon } from "../CustomIcons";
+import { UserContext } from "@/hooks/api/user-context";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -46,6 +47,7 @@ export default function SignUpCard() {
   const [showPassword, setShowPassword] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
   const { signup } = useAPI();
+  const [user] = useContext(UserContext)
 
   const handleShowPassword = () => setShowPassword((show) => !show);
 
@@ -53,7 +55,7 @@ export default function SignUpCard() {
     setLoading(true);
     try {
       await signup({ email, password, fullName });
-      window.location.href = "/account";
+      window.location.href = `/${user.username}`
     } catch (error) {
       console.log(error);
     } finally {
@@ -117,7 +119,7 @@ export default function SignUpCard() {
                 /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(e.target.value)
               );
             }}
-            
+
           />
         </FormControl>
         <FormControl fullWidth>
