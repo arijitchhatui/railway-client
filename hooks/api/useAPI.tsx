@@ -52,11 +52,40 @@ const useAPI = () => {
     }
     return data;
   };
+  const createTicket = async (input: {
+    noAdult: string;
+    noChild: string;
+    ticketType: string;
+    des_class: string;
+    trainType: string;
+    via: string;
+    sourceStation: string;
+    destinationStation: string;
+  }) => {
+    const accessToken = getCookie(authCookieKey);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/tickets/create`,
+      {
+        method: "POST",
+        body: JSON.stringify(input),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+    return data;
+  };
 
   return {
     login,
     signup,
-    testToken
+    testToken,
+    createTicket,
   };
 };
 export default useAPI;

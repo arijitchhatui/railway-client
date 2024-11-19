@@ -2,6 +2,7 @@
 
 import { appBarOptions } from "@/components/GetImport";
 import { UserContext } from "@/hooks/api/user-context";
+import { authCookieKey } from "@/library/constants";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import MenuIcon from "@mui/icons-material/Menu";
 import TrainIcon from "@mui/icons-material/Train";
@@ -16,7 +17,11 @@ import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
+import { deleteCookie } from "cookies-next";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Fragment, useContext, useState } from "react";
+import toast from "react-hot-toast";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -30,13 +35,15 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 export default function AccountPage() {
-  const [open, setOpen] = useState(false);
+  const router = useRouter();
   const [user] = useContext(UserContext);
-  // const { id } = useParams();
-  // const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
-  // const pathName =
-  //   pathname === `/${user.username}/${id}` ? `${user.username}` : pathname;
+  const handleLogout = () => {
+    deleteCookie(authCookieKey);
+    router.push("/");
+    toast.success("Logged out");
+  };
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -64,7 +71,13 @@ export default function AccountPage() {
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               {appBarOptions.map((option, idx) => (
                 <Fragment key={idx}>
-                  <Button variant="text" color="info" size="small">
+                  <Button
+                    variant="text"
+                    color="info"
+                    size="small"
+                    href={option.route}
+                    component={Link}
+                  >
                     {option.label}
                   </Button>
                 </Fragment>
@@ -108,7 +121,11 @@ export default function AccountPage() {
                 {appBarOptions.map((option, idx) => (
                   <Fragment key={idx}>
                     <Paper elevation={3} sx={{ borderRadius: "16px" }}>
-                      <MenuItem sx={{ color: "text.secondary", my: 1 }}>
+                      <MenuItem
+                        sx={{ color: "text.secondary", my: 1 }}
+                        href={option.route}
+                        component={Link}
+                      >
                         {option.label}
                       </MenuItem>
                     </Paper>
@@ -117,8 +134,13 @@ export default function AccountPage() {
 
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Dark Mode
+                  <Button
+                    color="error"
+                    variant="contained"
+                    fullWidth
+                    onClick={handleLogout}
+                  >
+                    Logout
                   </Button>
                 </MenuItem>
                 <MenuItem>

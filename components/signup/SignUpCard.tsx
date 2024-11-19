@@ -43,9 +43,9 @@ export default function SignUpCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
+  const [, setValidEmail] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
+  const [, setValidPassword] = useState(false);
   const { signup } = useAPI();
   const [user] = useContext(UserContext)
 

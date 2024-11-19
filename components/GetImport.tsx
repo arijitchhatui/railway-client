@@ -140,21 +140,27 @@ export const articleInfo = [
 export const appBarOptions = [
   {
     label: "My Profile",
+    route:"/profile"
   },
   {
     label: "Booking History",
+    route:"/history"
   },
   {
     label: "Daily Ticket",
+    route:"/ticket"
   },
   {
     label: "Monthly Ticket",
+    route:"/"
   },
   {
     label: " Ticket(M)",
+    route:"/monthly"
   },
   {
     label: "Ticket(D)",
+    route:"/daily"
   },
 ];
 
