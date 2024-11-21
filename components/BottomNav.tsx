@@ -46,8 +46,8 @@ export function BottomNav() {
       icon: <LocationOnIcon />,
     },
     {
-      value: "/live",
-      label: "Live",
+      value: "/home",
+      label: "Home",
       icon: <LiveTvIcon />,
     },
   ];
