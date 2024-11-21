@@ -16,10 +16,9 @@ import Box from "@mui/material/Box";
 import MuiCard from "@mui/material/Card";
 
 import useAPI from "@/hooks/api/useAPI";
-import { UserContext } from "@/hooks/api/user-context";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { FacebookIcon, GoogleIcon } from "../CustomIcons";
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -46,7 +45,6 @@ export default function InCard() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { login } = useAPI();
-  const [user] = useContext(UserContext);
 
   const handleShowPassword = () => setShowPassword((show) => !show);
 
@@ -54,11 +52,11 @@ export default function InCard() {
     setLoading(true);
     try {
       await login({ email, password });
-      window.location.href = `/${user.username}`;
+      window.location.href = "/ticket";
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -129,7 +127,7 @@ export default function InCard() {
                       onClick={handleShowPassword}
                       edge="end"
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility/>}
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 ),

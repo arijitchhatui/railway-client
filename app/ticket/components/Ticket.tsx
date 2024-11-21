@@ -6,6 +6,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { styled } from "@mui/material/styles";
 
 import useAPI from "@/hooks/api/useAPI";
+import { UserContext } from "@/hooks/api/user-context";
 import { LoadingButton } from "@mui/lab";
 import {
   Autocomplete,
@@ -22,7 +23,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 const CustomCard = styled(Card)(({ theme }) => ({
@@ -69,8 +71,10 @@ const destinationStationOptions = [{ label: "kbgb" }];
 const viaOptions = [{ label: "CHT-PLF" }];
 const classOptions = [{ label: "SECOND" }, { label: "FIRST" }];
 export function TicketPage() {
+  const router = useRouter();
   const { createTicket } = useAPI();
   const [via, setVia] = useState("");
+  const [user] = useContext(UserContext);
   const [noChild, setNoChild] = useState("");
   const [noAdult, setNoAdult] = useState("");
   const [loading, setLoading] = useState(false);
@@ -79,7 +83,6 @@ export function TicketPage() {
   const [ticketType, setTicketType] = useState("");
   const [sourceStation, setSourceStation] = useState("");
   const [destinationStation, setDestinationStation] = useState("");
-
 
   const handleSubmit = async () => {
     setLoading(false);
@@ -106,7 +109,7 @@ export function TicketPage() {
     <Box
       sx={{
         width: "100%",
-        position: "fixed",
+        position:"fixed",
         left: 0,
         right: 0,
         top: 0,
@@ -124,7 +127,7 @@ export function TicketPage() {
             }
             action={
               <>
-                <IconButton>
+                <IconButton onClick={() => router.push(`/${user.username}`)}>
                   <LoginIcon />
                 </IconButton>
                 <IconButton>

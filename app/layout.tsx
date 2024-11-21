@@ -1,6 +1,6 @@
 import { UserContextWrapper } from "@/hooks/api/user-context";
 import { UserProfilesEntity } from "@/hooks/entities/users.entity";
-import { authCookieKey, authenticatedPathRegex } from "@/library/constants";
+import { authCookieKey } from "@/library/constants";
 import theme from "@/util/theme";
 import { ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
@@ -33,9 +33,6 @@ const validateAuth = async () => {
   const pathname = headersList.get("x-pathname") ?? "/";
   const accessToken = cookies().get(authCookieKey)?.value;
 
-  const isAuthenticatedPath = authenticatedPathRegex.test(pathname);
-  if (!isAuthenticatedPath) return null;
-
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/status`, {
     method: "GET",
     headers: {
@@ -44,7 +41,10 @@ const validateAuth = async () => {
     },
   });
 
-  if (res.status === 401 || res.status === 403) {
+  if (
+    (res.status === 401 || res.status === 403) &&
+    !["/", "/login", "/signup"].includes(pathname)
+  ) {
     return redirect("/");
   }
 
