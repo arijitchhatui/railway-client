@@ -14,6 +14,7 @@ export default function SingleTicket() {
   const loadTicket = async () => {
     try {
       const ticket = await getTicket(ticketId as string);
+      console.log(ticket)
       setTicket(ticket);
     } catch (error) {
       console.log(error);

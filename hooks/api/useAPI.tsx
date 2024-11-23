@@ -53,8 +53,8 @@ const useAPI = () => {
     return data;
   };
   const createTicket = async (input: {
-    noAdult: string;
-    noChild: string;
+    noAdult: number;
+    noChild: number;
     ticketType: string;
     des_class: string;
     trainType: string;

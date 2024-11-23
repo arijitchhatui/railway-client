@@ -1,8 +1,8 @@
 export interface TicketsEntity {
   _id:string
   userId: string;
-  noAdult: string;
-  noChild: string;
+  noAdult: number;
+  noChild: number;
   ticketType: string;
   des_class: string;
   trainType: string;

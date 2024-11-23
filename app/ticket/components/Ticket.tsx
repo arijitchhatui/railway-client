@@ -45,18 +45,8 @@ const CustomCard = styled(Card)(({ theme }) => ({
   }),
 }));
 
-const adultOptions = [
-  { label: "Adult (1)" },
-  { label: "Adult (2)" },
-  { label: "Adult (3)" },
-  { label: "Adult (4)" },
-];
-const childOptions = [
-  { label: "Child (1)" },
-  { label: "Child (2)" },
-  { label: "Child (3)" },
-  { label: "Child (4)" },
-];
+const adultOptions = [{ label: 1 }, { label: 2 }, { label: 3 }, { label: 4 }];
+const childOptions = [{ label: 0 }, { label: 1 }, { label: 2 }, { label: 3 }];
 
 const ticketTypeOptions = [{ label: "JOURNEY(J)" }, { label: "RETURN(R)" }];
 
@@ -75,8 +65,8 @@ export function TicketPage() {
   const { createTicket } = useAPI();
   const [via, setVia] = useState("");
   const [user] = useContext(UserContext);
-  const [noChild, setNoChild] = useState("");
-  const [noAdult, setNoAdult] = useState("");
+  const [noChild, setNoChild] = useState(0);
+  const [noAdult, setNoAdult] = useState(0);
   const [loading, setLoading] = useState(false);
   const [trainType, setTrainType] = useState("");
   const [des_class, setDes_class] = useState("");
@@ -109,7 +99,7 @@ export function TicketPage() {
     <Box
       sx={{
         width: "100%",
-        position:"fixed",
+        position: "fixed",
         left: 0,
         right: 0,
         top: 0,
@@ -168,7 +158,7 @@ export function TicketPage() {
                       options={adultOptions}
                       value={{ label: noAdult }}
                       onChange={(e, newNoAdult) =>
-                        setNoAdult(newNoAdult?.label || "")
+                        setNoAdult(newNoAdult?.label || 1)
                       }
                       isOptionEqualToValue={(option, value) =>
                         option.label === value?.label
@@ -204,7 +194,7 @@ export function TicketPage() {
                       options={childOptions}
                       value={{ label: noChild }}
                       onChange={(e, newNoChild) =>
-                        setNoChild(newNoChild?.label || "")
+                        setNoChild(newNoChild?.label || 0)
                       }
                       isOptionEqualToValue={(option, value) =>
                         option.label === value?.label

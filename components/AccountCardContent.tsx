@@ -5,17 +5,19 @@ import { TicketsEntity } from "@/hooks/entities/tickets.entities";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid2";
 import Typography from "@mui/material/Typography";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { StyledTypography, SyledCard, SyledCardContent } from "./GetImport";
 
 export default function AccountCardContentPage() {
   const { getTickets } = useAPI();
+  const router = useRouter();
   const [tickets, setTickets] = useState<TicketsEntity[]>([]);
   const loadTickets = async () => {
     try {
       const ticket = await getTickets();
-      await setTickets(ticket);
+      setTickets(ticket);
     } catch (error) {
       console.log(error);
       toast.error("Failed to load tickets");
@@ -39,6 +41,7 @@ export default function AccountCardContentPage() {
                 width: "100%",
                 height: "50%",
               }}
+              onClick={() => router.push(`/ticket/${ticket._id}`)}
             />
             <SyledCardContent>
               <Typography gutterBottom variant="caption" component="div">
