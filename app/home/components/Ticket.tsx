@@ -35,10 +35,11 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
           position: "fixed",
           left: 0,
           right: 0,
+          zIndex: 1000,
           top: 0,
         }}
       >
-        <Container maxWidth="md" style={{ padding: 0 }}>
+        <Container maxWidth="md" style={{ padding: 0, zIndex: 4 }}>
           <Card sx={{ width: "100%", m: 0, p: 0, backgroundColor: "#ff8c4d" }}>
             <CardHeader
               avatar={
@@ -53,24 +54,30 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
               }
             />
           </Card>
-          <Card sx={{ p: 2 }}>
+          <Card sx={{ p: 2, zIndex: 1000 }}>
             <Stack justifyContent="space-between" direction="row">
               <Icon>
                 <Avatar
                   src="/icons/crisLogo.jpeg"
                   alt="App Logo"
-                  sx={{ width: 25, height: 25 }}
+                  sx={{ width: 25, height: 25, zIndex:4 }}
                 />
               </Icon>
               <Stack direction="row">
-                <Typography variant="body2" fontWeight={300}>
-                  IR Unreserved Ticket
-                </Typography>
+                <div className="text-container">
+                  <Typography
+                    variant="body2"
+                    fontWeight={300}
+                    className="scroll-text"
+                  >
+                    IR UNRESERVED TICKETING
+                  </Typography>
+                </div>
                 <Icon>
                   <Avatar
                     src="/icons/new.png"
                     alt="App Logo"
-                    sx={{ width: 25, height: 25 }}
+                    sx={{ width: 25, height: 25 , zIndex:4}}
                   />
                 </Icon>
               </Stack>
@@ -79,8 +86,7 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
         </Container>
       </Box>
       <Box padding={1} marginTop={16}>
-        
-        <Card key={ticket._id} sx={{ backgroundColor: "#fffc04", p: 1 }}>
+        <Card key={ticket._id} sx={{ backgroundColor: "#fffc04", p: 1,  }}>
           <Stack>
             <Stack>
               <Typography>HAPPY JOURNEY</Typography>
@@ -114,10 +120,14 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
               <Avatar
                 sx={{
                   bgcolor: deepPurple[500],
+                  mt: 3.5,
+                  display: "flex",
+                  justifyContent: "center",
                   width: 20,
                   height: 20,
-                  mt: 3.5,
                 }}
+                alt="Remy Sharp"
+                src="/broken-image.jpg"
               >
                 S
               </Avatar>
@@ -140,13 +150,15 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
               </Avatar>
               <Stack direction="column">
                 <Typography marginLeft={0.5}>बालीगंज</Typography>
-                <Typography marginLeft={0.5}>{ticket.destinationStation}</Typography>
+                <Typography marginLeft={0.5}>
+                  {ticket.destinationStation}
+                </Typography>
                 <Typography marginLeft={0.5}>বালিগঞ্জ</Typography>
               </Stack>
             </Stack>
             <Stack direction="row">
-              <Typography>Adult: 1</Typography>
-              <Typography marginLeft={2}>Child: 0 </Typography>
+              <Typography>Adult:{ticket.noAdult}</Typography>
+              <Typography marginLeft={2}>Child: {ticket.noChild} </Typography>
             </Stack>
             <Stack direction="row" justifyContent="space-between">
               <Stack direction="row" marginTop={1}>
@@ -172,16 +184,7 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
             </Stack>
             <Divider />
             <Stack direction="row">
-              <Avatar
-                sx={{
-                  bgcolor: deepPurple[500],
-                  width: 25,
-                  height: 15,
-                  mt: 0.5,
-                }}
-              >
-                via
-              </Avatar>
+              <Typography>via</Typography>
               <Typography marginLeft={1}>{ticket.via}</Typography>
             </Stack>
             <Divider />
@@ -202,15 +205,15 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
               </Typography>
             </Stack>
             <Typography marginTop={0.5} variant="body2">
-              Booking Time:15/11/2024 18:11
+              {moment(ticket.bookingDate).format("LLL")}
             </Typography>
           </Stack>
         </Card>
         <Card sx={{ p: 1 }}>
-          <Typography variant="body2" color="primary" fontSize={11.5}>
+          <Typography variant="body2" color="error" fontSize={11.5}>
             It is recommended not to preform factory reset or change your
             handset whenever you are having valid ticket in the mobile.Click for
-            <Link style={{ color: "info" }} href="/">
+            <Link color="info" href="/">
               {" "}
               Changing Handset with Valid Ticket
             </Link>

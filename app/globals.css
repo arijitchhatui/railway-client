@@ -6,4 +6,22 @@
   background: #060A11;
 
 } */
+.text-container {
 
+  white-space: nowrap;
+  width: 100%;
+}
+
+.scroll-text {
+  display: inline-block;
+  animation: moveLeft 10s linear infinite;
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
