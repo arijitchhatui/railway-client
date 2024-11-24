@@ -2,8 +2,6 @@
 import {
   appBarOptions,
   StyledToolbar,
-  StyledTypography,
-  SyledCard,
   SyledCardContent,
 } from "@/components/GetImport";
 import { UserContext } from "@/hooks/api/user-context";
@@ -15,6 +13,7 @@ import TrainIcon from "@mui/icons-material/Train";
 import {
   AppBar,
   Box,
+  Card,
   CardMedia,
   Container,
   Fab,
@@ -153,7 +152,7 @@ export function HomePage() {
       <Grid2 container spacing={2} columns={12} my={10}>
         {tickets.map((ticket) => (
           <Grid2 key={ticket._id} size={{ xs: 12, md: 6 }}>
-            <SyledCard variant="outlined" tabIndex={0}>
+            <Card variant="outlined" tabIndex={0}>
               <CardMedia
                 component="img"
                 alt="green iguana"
@@ -167,19 +166,11 @@ export function HomePage() {
               />
               <SyledCardContent>
                 <Typography gutterBottom variant="caption" component="div">
-                  {ticket.destinationStation}
+                  FROM: {ticket.destinationStation} <br />
+                  TO: {ticket.sourceStation}
                 </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  {ticket.sourceStation}
-                </Typography>
-                <StyledTypography variant="body2" color="text.secondary">
-                  Learn about our commitment to sustainability and the
-                  innovative engineering solutions we&apos;re implementing to
-                  create a greener future. Discover the impact of our
-                  eco-friendly initiatives{ticket.noAdult}
-                </StyledTypography>
               </SyledCardContent>
-            </SyledCard>
+            </Card>
           </Grid2>
         ))}
       </Grid2>

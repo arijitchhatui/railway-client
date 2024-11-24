@@ -1,6 +1,8 @@
 {
   "name": "railway-client",
   "version": "0.1.0",
+  "description": "My instagram web app",
+  "license":"MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
