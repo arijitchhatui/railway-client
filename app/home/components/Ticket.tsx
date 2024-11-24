@@ -21,7 +21,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface TicketCardProps {
-  ticket: TicketsEntity;
+  ticket: TicketsEntity
   onMutation?: () => unknown;
 }
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -60,15 +60,15 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
                 <Avatar
                   src="/icons/crisLogo.jpeg"
                   alt="App Logo"
-                  sx={{ width: 25, height: 25, zIndex:4 }}
+                  sx={{ width: 25, height: 25, zIndex: 4 }}
                 />
               </Icon>
               <Stack direction="row">
                 <div className="text-container">
                   <Typography
-                    variant="body2"
-                    fontWeight={300}
+                    variant="body1"
                     className="scroll-text"
+                    color="#ff8c4d"
                   >
                     IR UNRESERVED TICKETING
                   </Typography>
@@ -77,7 +77,7 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
                   <Avatar
                     src="/icons/new.png"
                     alt="App Logo"
-                    sx={{ width: 25, height: 25 , zIndex:4}}
+                    sx={{ width: 25, height: 25, zIndex: 4 }}
                   />
                 </Icon>
               </Stack>
@@ -86,7 +86,7 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
         </Container>
       </Box>
       <Box padding={1} marginTop={16}>
-        <Card key={ticket._id} sx={{ backgroundColor: "#fffc04", p: 1,  }}>
+        <Card key={ticket._id} sx={{ backgroundColor: "#fffc04", p: 1 }}>
           <Stack>
             <Stack>
               <Typography>HAPPY JOURNEY</Typography>
@@ -105,7 +105,7 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
                 textAlign="center"
               ></Typography>
               <Typography textAlign="left">
-                {moment(ticket.bookingDate).format("DD/MM/YYYY")}
+                {moment(ticket.bookingTime).format("DD/MM/YYYY")}
               </Typography>
             </Stack>
             <Stack direction="row" justifyContent="space-between">
@@ -132,9 +132,15 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
                 S
               </Avatar>
               <Stack direction="column">
-                <Typography marginLeft={0.5}>चंपाहाटी</Typography>
+                <Typography marginLeft={0.5}>
+                  {" "}
+                  चंपाहाटी
+                </Typography>
                 <Typography marginLeft={0.5}>{ticket.sourceStation}</Typography>
-                <Typography marginLeft={0.5}>চম্পাহাটি</Typography>
+                <Typography marginLeft={0.5}>
+                  {" "}
+                  চম্পাহাটি
+                </Typography>
               </Stack>
             </Stack>
             <Stack direction="row" marginTop={1}>
@@ -149,11 +155,17 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
                 D
               </Avatar>
               <Stack direction="column">
-                <Typography marginLeft={0.5}>बालीगंज</Typography>
+                <Typography marginLeft={0.5}>
+                  {" "}
+                  बालीगंज
+                </Typography>
                 <Typography marginLeft={0.5}>
                   {ticket.destinationStation}
                 </Typography>
-                <Typography marginLeft={0.5}>বালিগঞ্জ</Typography>
+                <Typography marginLeft={0.5}>
+                  {" "}
+                  বালিগঞ্জ
+                </Typography>
               </Stack>
             </Stack>
             <Stack direction="row">

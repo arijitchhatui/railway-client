@@ -12,7 +12,7 @@ export interface TicketsEntity {
   sac: string |number;
   ir: string;
   bookingTime: Date;
-  sourceStation: string;
+  sourceStation: string
   destinationStation: string
 }
 

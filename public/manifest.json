@@ -8,8 +8,8 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/icons/instagram-symbol.png",
-      "sizes": "192x192",
+      "src": "/icons/appIcon.png",
+      "sizes": "686x688",
       "type": "image/png"
     },
 

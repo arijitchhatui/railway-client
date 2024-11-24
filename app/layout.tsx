@@ -23,8 +23,8 @@ export const metadata = {
   manifest: "/manifest.json",
   keywords: ["nextjs", "nextjs14", "next14", "pwa", "next-pwa"],
   icons: [
-    { rel: "rail-icon", url: "icons/rail2.png" },
-    { rel: "icon", url: "icons/rail2.png" },
+    { rel: "rail-icon", url: "icons/appIcon.png" },
+    { rel: "icon", url: "icons/rail.png" },
   ],
 } satisfies Metadata;
 

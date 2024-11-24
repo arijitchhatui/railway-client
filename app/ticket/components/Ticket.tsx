@@ -5,8 +5,8 @@ import LoginIcon from "@mui/icons-material/Login";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { styled } from "@mui/material/styles";
 
-import useAPI from "@/hooks/api/useAPI";
 import { UserContext } from "@/hooks/api/user-context";
+import useTicketAPI from "@/hooks/api/useTicketAPI";
 import { LoadingButton } from "@mui/lab";
 import {
   Autocomplete,
@@ -57,21 +57,21 @@ const trainOptions = [
 ];
 
 const sourceStationOptions = [{ label: "CHAMPAHATI" }];
-const destinationStationOptions = [{ label: "kbgb" }];
-const viaOptions = [{ label: "CHT-PLF" }];
+const destinationStationOptions = [{ label: "BALLYGAUNGE" }];
+const viaOptions = [{ label: "SPR" }];
 const classOptions = [{ label: "SECOND" }, { label: "FIRST" }];
 export function TicketPage() {
   const router = useRouter();
-  const { createTicket } = useAPI();
   const [via, setVia] = useState("");
   const [user] = useContext(UserContext);
+  const { createTicket } = useTicketAPI();
   const [noChild, setNoChild] = useState(0);
-  const [noAdult, setNoAdult] = useState(0);
+  const [noAdult, setNoAdult] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [trainType, setTrainType] = useState("");
-  const [des_class, setDes_class] = useState("");
-  const [ticketType, setTicketType] = useState("");
+  const [des_class, setDes_class] = useState("SECOND");
   const [sourceStation, setSourceStation] = useState("");
+  const [trainType, setTrainType] = useState("ORDINARY(O)");
+  const [ticketType, setTicketType] = useState("JOURNEY(J)");
   const [destinationStation, setDestinationStation] = useState("");
 
   const handleSubmit = async () => {
