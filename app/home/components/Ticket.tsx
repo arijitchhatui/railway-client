@@ -109,7 +109,7 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
               </Typography>
             </Stack>
             <Stack direction="row" justifyContent="space-between">
-              <Typography>Rs. 5.00/-</Typography>
+              <Typography>Rs.{ticket.ticketType === "RETURN(R)" ? "10.00/-" : "5.00/-"}</Typography>
               <Typography>9732768080</Typography>
             </Stack>
             <Stack>

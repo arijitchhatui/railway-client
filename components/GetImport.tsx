@@ -1,8 +1,8 @@
-import { styled } from "@mui/material/styles";
-import Toolbar from "@mui/material/Toolbar";
+import { Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
 export const cardData = [
   {
     img: "/photos/1.jpg",
@@ -145,27 +145,27 @@ export const articleInfo = [
 export const appBarOptions = [
   {
     label: "My Profile",
-    route:"/profile"
+    route: "/profile",
   },
   {
     label: "Booking History",
-    route:"/history"
+    route: "/history",
   },
   {
     label: "Daily Ticket",
-    route:"/ticket"
+    route: "/ticket",
   },
   {
     label: "Monthly Ticket",
-    route:"/"
+    route: "/",
   },
   {
     label: " Ticket(M)",
-    route:"/monthly"
+    route: "/monthly",
   },
   {
     label: "Ticket(D)",
-    route:"/daily"
+    route: "/daily",
   },
 ];
 
@@ -197,7 +197,6 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   border: "1px solid",
   borderColor: theme.palette.divider,
 }));
-
 
 export const SyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
@@ -234,3 +233,52 @@ export const StyledTypography = styled(Typography)({
   overflow: "hidden",
   textOverflow: "ellipsis",
 });
+
+export const adultOptions = [
+  { label: 1 },
+  { label: 2 },
+  { label: 3 },
+  { label: 4 },
+];
+export const childOptions = [
+  { label: 0 },
+  { label: 1 },
+  { label: 2 },
+  { label: 3 },
+];
+
+export const ticketTypeOptions = [
+  { label: "JOURNEY(J)" },
+  { label: "RETURN(R)" },
+];
+
+export const trainOptions = [
+  { label: "ORDINARY(O)" },
+  { label: "MAIL/EXP(M/E)" },
+  { label: "SUPERFAST(S)" },
+];
+
+export const sourceStationOptions = [
+  { label: "CHAMPAHATI" },
+  { label: "CANNING" },
+  { label: "SONARPUR" },
+  { label: "SEALDAH" },
+  { label: "BALLYGAUNGE" },
+  { label: "PARK CIRCUS" },
+  { label: "JADAVPUR" },
+  { label: "BAGHAJATIN" },
+  { label: "NEW GARIA" },
+];
+export const destinationStationOptions = [
+  { label: "CHAMPAHATI" },
+  { label: "CANNING" },
+  { label: "SONARPUR" },
+  { label: "SEALDAH" },
+  { label: "BALLYGAUNGE" },
+  { label: "PARK CIRCUS" },
+  { label: "JADAVPUR" },
+  { label: "BAGHAJATIN" },
+  { label: "NEW GARIA" },
+];
+export const viaOptions = [{ label: "SPR" }];
+export const classOptions = [{ label: "SECOND" }, { label: "FIRST" }];

@@ -5,6 +5,16 @@ import LoginIcon from "@mui/icons-material/Login";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { styled } from "@mui/material/styles";
 
+import {
+  adultOptions,
+  childOptions,
+  classOptions,
+  destinationStationOptions,
+  sourceStationOptions,
+  ticketTypeOptions,
+  trainOptions,
+  viaOptions,
+} from "@/components/GetImport";
 import { UserContext } from "@/hooks/api/user-context";
 import useTicketAPI from "@/hooks/api/useTicketAPI";
 import { LoadingButton } from "@mui/lab";
@@ -45,21 +55,6 @@ const CustomCard = styled(Card)(({ theme }) => ({
   }),
 }));
 
-const adultOptions = [{ label: 1 }, { label: 2 }, { label: 3 }, { label: 4 }];
-const childOptions = [{ label: 0 }, { label: 1 }, { label: 2 }, { label: 3 }];
-
-const ticketTypeOptions = [{ label: "JOURNEY(J)" }, { label: "RETURN(R)" }];
-
-const trainOptions = [
-  { label: "ORDINARY(O)" },
-  { label: "MAIL/EXP(M/E)" },
-  { label: "SUPERFAST(S)" },
-];
-
-const sourceStationOptions = [{ label: "CHAMPAHATI" }];
-const destinationStationOptions = [{ label: "BALLYGAUNGE" }];
-const viaOptions = [{ label: "SPR" }];
-const classOptions = [{ label: "SECOND" }, { label: "FIRST" }];
 export function TicketPage() {
   const router = useRouter();
   const [via, setVia] = useState("");
@@ -71,7 +66,7 @@ export function TicketPage() {
   const [des_class, setDes_class] = useState("SECOND");
   const [sourceStation, setSourceStation] = useState("");
   const [trainType, setTrainType] = useState("ORDINARY(O)");
-  const [ticketType, setTicketType] = useState("JOURNEY(J)");
+  const [ticketType, setTicketType] = useState("RETURN(R)");
   const [destinationStation, setDestinationStation] = useState("");
 
   const handleSubmit = async () => {
