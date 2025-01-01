@@ -101,7 +101,7 @@ export default function CardContentPage() {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <div>
         <Typography variant="h5" color="primary" gutterBottom>
-           Railway
+           Get all pictures of OnlyFans Creators
         </Typography>
         <Typography variant="subtitle2" color="primary">
           Stay in the loop with the latest pictures of your our products
