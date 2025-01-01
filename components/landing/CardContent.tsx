@@ -21,6 +21,8 @@ import {
   SyledCard,
   SyledCardContent,
 } from "../GetImport";
+import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
   return (
@@ -62,6 +64,7 @@ function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
 }
 
 export function Search() {
+
   return (
     <FormControl sx={{ width: { xs: "100%", md: "25ch" } }} variant="outlined">
       <OutlinedInput
@@ -96,6 +99,7 @@ export default function CardContentPage() {
   const handleClick = () => {
     console.info("You clicked the filter chip.");
   };
+  const router = useRouter()
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -103,6 +107,14 @@ export default function CardContentPage() {
         <Typography variant="h5" color="primary" gutterBottom>
            Get all pictures of OnlyFans Creators
         </Typography>
+        <Button
+              color="primary"
+              variant="contained"
+              size="small"
+              onClick={() => router.push("/signup")}
+            >
+              Sign up
+            </Button>
         <Typography variant="subtitle2" color="primary">
           Stay in the loop with the latest pictures of your our products
         </Typography>
