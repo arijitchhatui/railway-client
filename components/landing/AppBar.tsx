@@ -72,14 +72,14 @@ export default function AppAppBar() {
               alignItems: "center",
             }}
           >
-            <Button
+            {/* <Button
               color="primary"
               variant="text"
               size="small"
               onClick={() => router.push("/login")}
             >
               Login
-            </Button>
+            </Button> */}
             <Button
               color="primary"
               variant="contained"
