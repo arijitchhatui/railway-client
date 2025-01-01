@@ -1,6 +1,5 @@
 import { LoadingButton } from "@mui/lab";
 import {
-  Button,
   Divider,
   FormControl,
   FormLabel,
@@ -17,7 +16,6 @@ import useAPI from "@/hooks/api/useAPI";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
-import { FacebookIcon, GoogleIcon } from "../CustomIcons";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -53,7 +51,7 @@ export default function SignUpCard() {
     setLoading(true);
     try {
       await signup({ email, password, fullName });
-      window.location.href = "/ticket";
+      // window.location.href = "/ticket";
     } catch (error) {
       console.log(error);
     } finally {
@@ -69,7 +67,7 @@ export default function SignUpCard() {
         variant="h4"
         sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
       >
-        Sign up
+        Sign up with your onlyFans Account
       </Typography>
       <Box
         component="form"
@@ -176,7 +174,7 @@ export default function SignUpCard() {
         </Typography>
       </Box>
       <Divider>or</Divider>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      {/* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <Button
           fullWidth
           variant="outlined"
@@ -193,7 +191,7 @@ export default function SignUpCard() {
         >
           Sign up with Facebook
         </Button>
-      </Box>
+      </Box> */}
     </Card>
   );
 }

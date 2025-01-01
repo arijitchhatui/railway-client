@@ -1,6 +1,5 @@
 import { LoadingButton } from "@mui/lab";
 import {
-  Button,
   Checkbox,
   Divider,
   FormControl,
@@ -19,7 +18,6 @@ import useAPI from "@/hooks/api/useAPI";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
-import { FacebookIcon, GoogleIcon } from "../CustomIcons";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -52,7 +50,7 @@ export default function InCard() {
     setLoading(true);
     try {
       await login({ email, password });
-      window.location.href = "/ticket";
+      // window.location.href = "/ticket";
     } catch (error) {
       console.log(error);
     } finally {
@@ -159,14 +157,14 @@ export default function InCard() {
         </Typography>
       </Box>
       <Divider>or</Divider>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      {/* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <Button fullWidth variant="outlined" startIcon={<GoogleIcon />}>
           Sign in with Google
         </Button>
         <Button fullWidth variant="outlined" startIcon={<FacebookIcon />}>
           Sign in with Facebook
         </Button>
-      </Box>
+      </Box> */}
     </Card>
   );
 }

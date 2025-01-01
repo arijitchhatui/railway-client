@@ -101,10 +101,10 @@ export default function CardContentPage() {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <div>
         <Typography variant="h5" color="primary" gutterBottom>
-          Railway
+           Railway
         </Typography>
         <Typography variant="subtitle2" color="primary">
-          Stay in the loop with the latest about our products
+          Stay in the loop with the latest pictures of your our products
         </Typography>
       </div>
       <Box

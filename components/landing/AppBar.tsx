@@ -1,7 +1,8 @@
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import MenuIcon from "@mui/icons-material/Menu";
+import LoginIcon from "@mui/icons-material/Login";
 import TrainIcon from "@mui/icons-material/Train";
+import { Fab } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,8 +10,6 @@ import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-
-import { Fab } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
@@ -94,7 +93,7 @@ export default function AppAppBar() {
           <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
             <DarkModeIcon sx={{ color: "primary" }} />
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              <MenuIcon />
+              <LoginIcon color="inherit" />
             </IconButton>
             <Drawer
               anchor="top"
@@ -106,6 +105,7 @@ export default function AppAppBar() {
                 },
               }}
             >
+              ....
               <Box sx={{ p: 2, backgroundColor: "background.default" }}>
                 <Box
                   sx={{
@@ -117,13 +117,6 @@ export default function AppAppBar() {
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
-                {appBarOptions.map((option, idx) => (
-                  <Fragment key={idx}>
-                    <MenuItem sx={{ color: "text.secondary" }}>
-                      {option.label}
-                    </MenuItem>
-                  </Fragment>
-                ))}
 
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>

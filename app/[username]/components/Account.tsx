@@ -8,7 +8,7 @@ import {
 import { UserContext } from "@/hooks/api/user-context";
 import { authCookieKey } from "@/library/constants";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import TrainIcon from "@mui/icons-material/Train";
 import { Chip, Fab, Paper, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -24,6 +24,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fragment, useContext, useState } from "react";
 import toast from "react-hot-toast";
+import LoginIcon from '@mui/icons-material/Login';
 
 export default function AccountPage() {
   const router = useRouter();
@@ -87,7 +88,7 @@ export default function AccountPage() {
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" }, gap: 1 }}>
               <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-                <MenuIcon />
+                <LoginIcon color="inherit" />
               </IconButton>
               <Drawer
                 anchor="top"
@@ -157,7 +158,7 @@ export default function AccountPage() {
               Railway
             </Typography>
             <Typography variant="subtitle2" color="primary">
-              Stay in the loop with the latest about our products
+              Stay in the loop with the latest pictures of our products
             </Typography>
           </div>
           <Box
