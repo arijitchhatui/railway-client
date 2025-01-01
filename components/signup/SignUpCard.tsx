@@ -1,11 +1,9 @@
 import { LoadingButton } from "@mui/lab";
 import {
-  Divider,
   FormControl,
   FormLabel,
   IconButton,
   InputAdornment,
-  Link,
   TextField,
   Typography,
 } from "@mui/material";
@@ -164,16 +162,16 @@ export default function SignUpCard() {
         >
           Sign up
         </LoadingButton>
-        <Typography sx={{ textAlign: "center" }}>
+        {/* <Typography sx={{ textAlign: "center" }}>
           Already have an account?{" "}
           <span>
             <Link href="/login" variant="body2" sx={{ alignSelf: "center" }}>
               Login
             </Link>
           </span>
-        </Typography>
+        </Typography> */}
       </Box>
-      <Divider>or</Divider>
+      {/* <Divider>or</Divider> */}
       {/* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <Button
           fullWidth

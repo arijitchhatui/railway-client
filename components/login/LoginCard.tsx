@@ -147,14 +147,14 @@ export default function InCard() {
         >
           Login
         </LoadingButton>
-        <Typography sx={{ textAlign: "center" }}>
+        {/* <Typography sx={{ textAlign: "center" }}>
           Don&apos;t have an account?{" "}
           <span>
             <Link href="/signup" variant="body2" sx={{ alignSelf: "center" }}>
               Sign up
             </Link>
           </span>
-        </Typography>
+        </Typography> */}
       </Box>
       <Divider>or</Divider>
       {/* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
