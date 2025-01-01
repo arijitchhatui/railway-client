@@ -120,14 +120,14 @@ export default function AppAppBar() {
 
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button
+                  {/* <Button
                     color="primary"
                     variant="contained"
                     fullWidth
                     onClick={() => router.push("/login ")}
                   >
                     Login
-                  </Button>
+                  </Button> */}
                 </MenuItem>
                 <MenuItem>
                   <Button
