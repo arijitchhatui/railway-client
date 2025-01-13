@@ -166,8 +166,8 @@ export function HomePage() {
               />
               <SyledCardContent>
                 <Typography gutterBottom variant="caption" component="div">
-                  FROM: {ticket.destinationStation} <br />
-                  TO: {ticket.sourceStation}
+                  FROM: {ticket.destinationStation.original} <br />
+                  TO: {ticket.sourceStation.original}
                 </Typography>
               </SyledCardContent>
             </Card>

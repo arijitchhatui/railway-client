@@ -1,17 +1,9 @@
 import { authCookieKey } from "@/library/constants";
 import { getCookie } from "cookies-next";
+import { CreateTicketInput } from "../entities/tickets.entities";
 
 const useTicketAPI = () => {
-  const createTicket = async (input: {
-    noAdult: number;
-    noChild: number;
-    ticketType: string;
-    des_class: string;
-    trainType: string;
-    via: string;
-    sourceStation: string;
-    destinationStation: string;
-  }) => {
+  const createTicket = async (input: CreateTicketInput) => {
     const accessToken = getCookie(authCookieKey);
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/tickets/create`,
@@ -54,7 +46,7 @@ const useTicketAPI = () => {
       {
         method: "GET",
         headers: {
-          Content_Type: "application/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}
         `,
         },
@@ -74,7 +66,7 @@ const useTicketAPI = () => {
       {
         method: "GET",
         headers: {
-          Content_Type: "application/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
       }
@@ -109,7 +101,7 @@ const useTicketAPI = () => {
     getTickets,
     getTimeline,
     createTicket,
-    deleteTicket
+    deleteTicket,
   };
 };
 export default useTicketAPI;

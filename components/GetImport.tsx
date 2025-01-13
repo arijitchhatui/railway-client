@@ -241,10 +241,10 @@ export const adultOptions = [
   { label: 4 },
 ];
 export const childOptions = [
-  { label: 0 },
   { label: 1 },
   { label: 2 },
   { label: 3 },
+  { label: 4 },
 ];
 
 export const ticketTypeOptions = [

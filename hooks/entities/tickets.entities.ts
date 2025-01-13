@@ -1,5 +1,5 @@
 export interface TicketsEntity {
-  _id:string
+  _id: string;
   userId: string;
   noAdult: number;
   noChild: number;
@@ -9,11 +9,19 @@ export interface TicketsEntity {
   bookingDate: Date;
   utsNo: string;
   via: string;
-  sac: string |number;
+  sac: string | number;
   ir: string;
   bookingTime: Date;
-  sourceStation: string
-  destinationStation: string
+  sourceStation: {
+    original: string;
+    hindi: string;
+    bengali: string;
+  };
+  destinationStation: {
+    original: string;
+    hindi: string;
+    bengali: string;
+  };
 }
 
 export interface CreateTicketInput {
@@ -22,7 +30,7 @@ export interface CreateTicketInput {
   ticketType: string;
   des_class: string;
   trainType: string;
-  mobileNumber: number;
   via: string;
-  charge: number;
+  sourceStation: string;
+  destinationStation: string;
 }

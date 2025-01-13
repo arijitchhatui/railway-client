@@ -53,7 +53,7 @@ export default function AccountCardContentPage() {
           <Card variant="outlined">
             <CardHeader
               avatar={<Avatar src="/icons/rail.png" alt="User" />}
-              title={ticket.sourceStation}
+              title={ticket.sourceStation.original}
               subheader={moment(ticket.bookingTime).format("DD/MM/YYYY")}
               action={
                 <IconButton onClick={() => handleDelete(ticket._id)}>
@@ -64,10 +64,10 @@ export default function AccountCardContentPage() {
             <CardContent onClick={() => router.push(`/ticket/${ticket._id}`)}>
               <>
                 <Typography gutterBottom variant="caption" component="div">
-                  {ticket.destinationStation}
+                  {ticket.destinationStation.original}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
-                  {ticket.sourceStation}
+                  {ticket.sourceStation.original}
                 </Typography>
               </>
             </CardContent>

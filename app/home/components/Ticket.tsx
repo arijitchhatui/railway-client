@@ -127,19 +127,18 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
                   height: 20,
                 }}
                 alt="Remy Sharp"
-                src="/broken-image.jpg"
               >
                 S
               </Avatar>
               <Stack direction="column">
                 <Typography marginLeft={0.5}>
                   {" "}
-                  चंपाहाटी
+                  {ticket.sourceStation.hindi}
                 </Typography>
-                <Typography marginLeft={0.5}>{ticket.sourceStation}</Typography>
+                <Typography marginLeft={0.5}>{ticket.sourceStation.original}</Typography>
                 <Typography marginLeft={0.5}>
                   {" "}
-                  চম্পাহাটি
+                  {ticket.sourceStation.bengali}
                 </Typography>
               </Stack>
             </Stack>
@@ -157,14 +156,14 @@ export const TicketCard = ({ ticket, onMutation }: TicketCardProps) => {
               <Stack direction="column">
                 <Typography marginLeft={0.5}>
                   {" "}
-                  बालीगंज
+                  {ticket.destinationStation.hindi}
                 </Typography>
                 <Typography marginLeft={0.5}>
-                  {ticket.destinationStation}
+                  {ticket.destinationStation.original}
                 </Typography>
                 <Typography marginLeft={0.5}>
                   {" "}
-                  বালিগঞ্জ
+                  {ticket.destinationStation.hindi}
                 </Typography>
               </Stack>
             </Stack>
