@@ -1,6 +1,6 @@
 export const authCookieKey = "_accessToken";
 
-export const authenticatedPaths = ["/home", "/location", "/ticket", "/train"];
+export const authenticatedPaths = ["/home", "/location", "/ticket", "/train","/coomer"];
 
 export const authenticatedPathsRegex = [
   /^\/home/,
